@@ -1,0 +1,23 @@
+$primary-color : #272727;
+$secondary-color : #ff652f;
+$twitter-color : #03e3fc;
+$telegram-color: #0088cc;
+$instagram-color : #c41a80;
+$github-color : #7811c2;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin transition-ease {
+    transition: all 500ms ease-in-out;
+}
+@function set-text-color($color) {
+    @if(lightness($color) > 40%) {
+        @return #000;
+    } @else {
+        @return #fff
+    }
+}
