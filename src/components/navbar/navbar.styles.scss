@@ -1,5 +1,41 @@
 @import '../../config';
 
+@include media-md {
+    .header{
+        position: fixed;
+        z-index: 2;
+        width: 100%;
+        padding: 1rem;
+
+        .menu-btn {
+            visibility: hidden;
+        }
+
+        .nav {
+            visibility: visible;
+
+            .menu-nav {
+                display: block;
+                transform: translateY(0);
+                height: 100vh;
+                background: transparent;
+                text-align: right;
+    
+                &__item {
+                    display: inline;
+                    padding-right: 1.5rem;
+                }
+    
+                &__link {
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}
+
+
 .header{
     position: fixed;
     z-index: 2;
