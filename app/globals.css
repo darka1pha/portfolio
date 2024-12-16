@@ -79,4 +79,12 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::-moz-selection {
+    /* Code for Firefox */
+    @apply bg-teal-500;
+  }
+
+  ::selection {
+    @apply bg-teal-500;
+  }
 }
