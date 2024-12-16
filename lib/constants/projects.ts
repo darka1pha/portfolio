@@ -3,6 +3,7 @@ import BAARIKA from '../../public/images/projects/baarika.webp';
 import ALPHAMOVIES from '../../public/images/projects/alphamoovies.webp';
 import MOOVIE from '../../public/images/projects/moovie.webp';
 import ATMOS from '../../public/images/projects/atmos.webp';
+import KRIST from '../../public/images/projects/krist.webp';
 
 export const PROJECTS = [
   {
@@ -24,6 +25,11 @@ export const PROJECTS = [
     title: 'Moovie',
     category: 'Next.js (v15)',
     image: MOOVIE,
+  },
+  {
+    title: 'Krist',
+    category: 'Next.js / Supabase',
+    image: KRIST,
   },
   {
     title: 'Atmos',
