@@ -27,7 +27,6 @@ export default function ProjectsSection() {
               <Image
                 src={project.image}
                 alt={project.title}
-                fill
                 className='object-cover transition-transform group-hover:scale-105'
               />
             </div>
