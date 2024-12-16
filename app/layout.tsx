@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Abolfazl Omrani',
   metadataBase: new URL('https://darkalpha.ir'),
   description: 'Portfolio website showcasing creative work and projects',
+  verification: { google: 'lDm-cObga-_xjhinBJE7AfadBEmH9XzNDn44it9SdSc' },
   keywords: [
     'Abolfazl Omrani',
     'Portfolio',
