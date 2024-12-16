@@ -20,7 +20,7 @@ export default function AboutSection() {
           </p>
           <Link
             href='/about'
-            className='inline-block bg-teal-500 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition-colors'
+            className='inline-block bg-teal-800 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition-colors'
           >
             MORE ABOUT ME
           </Link>
@@ -32,6 +32,7 @@ export default function AboutSection() {
               alt='Designer portrait'
               fill
               className='object-cover'
+              priority
             />
           </div>
           <div className='absolute -top-4 -right-4 w-24 h-24 border-2 border-teal-500 rounded-full' />

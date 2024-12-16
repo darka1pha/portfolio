@@ -49,7 +49,7 @@ export default function Contact() {
 
         <button
           type='submit'
-          className='bg-teal-500 text-white px-8 py-4 rounded-full hover:bg-teal-600 transition-colors'
+          className='bg-teal-800 text-white px-8 py-4 rounded-full hover:bg-teal-600 transition-colors'
         >
           Send Message
         </button>

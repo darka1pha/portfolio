@@ -12,7 +12,7 @@ export default function HeroSection() {
       </h1>
       <Link
         href='/contact'
-        className='inline-flex items-center space-x-2 bg-teal-500 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition-colors'
+        className='inline-flex items-center space-x-2 bg-teal-800 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition-colors'
       >
         <span>EXPLORE MORE</span>
         <ArrowRight size={20} />
