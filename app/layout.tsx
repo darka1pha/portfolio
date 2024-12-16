@@ -8,6 +8,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Abolfazl Omrani',
+  metadataBase: new URL('https://darkalpha.ir'),
   description: 'Portfolio website showcasing creative work and projects',
   keywords: [
     'Abolfazl Omrani',
