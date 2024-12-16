@@ -6,7 +6,7 @@ export default function About() {
       <h1 className='text-5xl font-bold mb-2'>About Me</h1>
       <p className='text-gray-400 mb-12'>Little Brief About Myself</p>
 
-      <div className='grid grid-cols-2 gap-12'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 sm:gap-12'>
         <div>
           <h2 className='text-4xl font-bold leading-tight mb-8'>
             My mission is to make web development simpler.
