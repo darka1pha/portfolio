@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Terminal, Briefcase, GraduationCap } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Terminal } from 'lucide-react';
 import PROFILE_IMAGE from '@/public/images/profile.webp';
 import { FadeIn, SectionHeading } from '@/components/animations';
 
@@ -98,25 +98,28 @@ export default function AboutSection() {
 
         {/* Right Column: Clear, Full-Color Profile Picture Card */}
         <div className='lg:col-span-5 relative flex justify-center'>
-          <FadeIn delay={0.2} direction='left'>
-            <div className='relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden glass-panel border border-white/15 p-3.5 shadow-2xl group'>
-              {/* Picture Container - Full color, crisp, no grayscale */}
-              <div className='relative w-full h-full rounded-2xl overflow-hidden bg-zinc-900 shadow-inner'>
+          <FadeIn delay={0.15} direction='left'>
+            <div className='relative w-full max-w-[320px] sm:max-w-[380px] rounded-3xl overflow-hidden glass-panel border border-white/20 p-3 sm:p-4 shadow-2xl bg-zinc-950/80 group'>
+              {/* Outer halo */}
+              <div className='absolute -inset-1 rounded-3xl bg-teal-500/20 blur-xl opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none' />
+
+              {/* Picture Frame with direct aspect-ratio */}
+              <div className='relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-zinc-900 shadow-inner'>
                 <Image
                   src={PROFILE_IMAGE}
                   alt='Abolfazl Omrani - React & Next.js Developer'
                   fill
-                  sizes='(max-width: 768px) 100vw, 400px'
-                  className='object-cover object-top transition-transform duration-500 group-hover:scale-105'
+                  sizes='(max-width: 768px) 320px, 380px'
+                  className='object-cover object-top transition-transform duration-700 group-hover:scale-105'
                   priority
                 />
               </div>
 
               {/* Clean Bottom Overlay Badge */}
-              <div className='absolute bottom-6 left-6 right-6 p-3.5 rounded-xl glass-panel border border-white/20 backdrop-blur-xl shadow-xl'>
+              <div className='mt-3.5 p-3.5 rounded-xl glass-panel-subtle border border-white/10'>
                 <div className='flex items-center justify-between'>
                   <div>
-                    <h3 className='text-sm font-bold text-white'>Abolfazl Omrani</h3>
+                    <h3 className='text-sm sm:text-base font-bold text-white'>Abolfazl Omrani</h3>
                     <p className='text-xs text-teal-400 font-mono'>React & Next.js Developer</p>
                   </div>
                   <div className='w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-teal-300'>
@@ -124,9 +127,6 @@ export default function AboutSection() {
                   </div>
                 </div>
               </div>
-
-              {/* Decorative Corner Glow */}
-              <div className='absolute -top-2 -right-2 w-14 h-14 rounded-full border-2 border-teal-500/40 pointer-events-none' />
             </div>
           </FadeIn>
         </div>

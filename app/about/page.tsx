@@ -73,25 +73,46 @@ export default function AboutPage() {
         />
 
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center'>
-          {/* Portrait Column - Full color, clear, no grayscale */}
-          <div className='lg:col-span-5 flex justify-center'>
-            <FadeIn delay={0.1} direction='right'>
-              <div className='relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden glass-panel border border-white/15 p-3.5 shadow-2xl group'>
-                <div className='relative w-full h-full rounded-2xl overflow-hidden bg-zinc-900 shadow-inner'>
+          {/* Portrait Column - Full color, prominent, immediately visible */}
+          <div className='lg:col-span-5 flex justify-center order-first lg:order-first'>
+            <FadeIn delay={0.05} direction='right' animateDirectly>
+              <div className='relative w-full max-w-[320px] sm:max-w-[380px] rounded-3xl overflow-hidden glass-panel border border-white/20 p-3 sm:p-4 shadow-2xl bg-zinc-950/80 group'>
+                {/* Glowing halo */}
+                <div className='absolute -inset-1 rounded-3xl bg-teal-500/20 blur-xl opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none' />
+
+                {/* Picture Frame with direct aspect-ratio */}
+                <div className='relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-zinc-900 shadow-inner'>
                   <Image
                     src={PROFILE_IMAGE}
                     alt='Abolfazl Omrani - React & Next.js Developer'
                     fill
-                    sizes='(max-width: 768px) 100vw, 400px'
-                    className='object-cover object-top transition-transform duration-500 group-hover:scale-105'
+                    sizes='(max-width: 768px) 320px, 380px'
+                    className='object-cover object-top transition-transform duration-700 group-hover:scale-105'
                     priority
                   />
                 </div>
 
-                <div className='absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-panel border border-white/20 backdrop-blur-xl shadow-xl'>
-                  <h3 className='text-sm font-bold text-white'>{PERSONAL_INFO.name}</h3>
-                  <p className='text-xs text-teal-400 font-mono'>React Developer | Next.js</p>
-                  <p className='text-[11px] text-zinc-400 mt-0.5'>Kerman / Tehran / Bandar Abbas, Iran</p>
+                {/* Info Bar at Bottom of Card */}
+                <div className='mt-3.5 p-3.5 rounded-xl glass-panel-subtle border border-white/10'>
+                  <div className='flex items-center justify-between'>
+                    <div>
+                      <h3 className='text-sm sm:text-base font-bold text-white'>
+                        {PERSONAL_INFO.name}
+                      </h3>
+                      <p className='text-xs text-teal-400 font-mono'>
+                        React Developer | Next.js
+                      </p>
+                    </div>
+                    <span className='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'>
+                      <span className='w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse' />
+                      <span>Available</span>
+                    </span>
+                  </div>
+
+                  <div className='flex items-center gap-1.5 mt-2 pt-2 border-t border-white/5 text-[11px] text-zinc-400'>
+                    <MapPin size={12} className='text-zinc-500' />
+                    <span>Kerman / Tehran / Bandar Abbas, Iran</span>
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -99,26 +120,26 @@ export default function AboutPage() {
 
           {/* Narrative Story from Resume */}
           <div className='lg:col-span-7 space-y-5'>
-            <FadeIn delay={0.15}>
+            <FadeIn delay={0.1} animateDirectly>
               <h3 className='text-2xl sm:text-3xl font-bold text-white leading-snug'>
                 Delivering high-impact products across logistics, freight management, fintech, and e-commerce.
               </h3>
             </FadeIn>
 
-            <FadeIn delay={0.2}>
+            <FadeIn delay={0.15} animateDirectly>
               <p className='text-zinc-200 text-sm sm:text-base leading-relaxed'>
                 I am a front-end developer with <span className='text-teal-400 font-semibold'>4+ years of professional experience</span> engineering scalable web applications. With a strong focus on performance, SEO, and user experience, I build solutions that solve complex operational challenges.
               </p>
             </FadeIn>
 
-            <FadeIn delay={0.25}>
+            <FadeIn delay={0.2} animateDirectly>
               <p className='text-zinc-400 text-sm sm:text-base leading-relaxed'>
                 Currently developing marine cargo import/export workflows and gate control systems at <span className='text-white font-medium'>Kaveh Port & Marine Services</span>. Previously led development of automated freight platforms (<span className='text-white font-medium'>Baarika.com</span> & <span className='text-white font-medium'>Nobaar.com</span>), financial trading education platforms, and custom 3D web applications with React Three Fiber.
               </p>
             </FadeIn>
 
             {/* Stats Bar */}
-            <FadeIn delay={0.3}>
+            <FadeIn delay={0.25} animateDirectly>
               <div className='grid grid-cols-2 sm:grid-cols-4 gap-4 py-5 border-y border-white/10'>
                 {stats.map((stat, i) => (
                   <div key={i} className='text-center sm:text-left'>

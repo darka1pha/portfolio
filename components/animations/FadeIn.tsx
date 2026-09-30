@@ -10,7 +10,8 @@ interface FadeInProps {
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
   distance?: number;
   className?: string;
-  viewport?: { once?: boolean; margin?: string; amount?: number };
+  viewport?: { once?: boolean; margin?: string; amount?: number | 'some' | 'all' };
+  animateDirectly?: boolean; // When true, animates on mount (ideal for Hero section)
 }
 
 export default function FadeIn({
@@ -18,9 +19,10 @@ export default function FadeIn({
   delay = 0,
   duration = 0.5,
   direction = 'up',
-  distance = 24,
+  distance = 20,
   className = '',
-  viewport = { once: true, margin: '-40px' },
+  viewport = { once: true, amount: 0.05 },
+  animateDirectly = false,
 }: FadeInProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -46,14 +48,33 @@ export default function FadeIn({
     ...getInitialPosition(),
   };
 
+  const target = {
+    opacity: 1,
+    x: 0,
+    y: 0,
+  };
+
+  if (animateDirectly) {
+    return (
+      <motion.div
+        initial={initial}
+        animate={target}
+        transition={{
+          duration: shouldReduceMotion ? 0.05 : duration,
+          delay,
+          ease: [0.21, 0.47, 0.32, 0.98],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       initial={initial}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-        y: 0,
-      }}
+      whileInView={target}
       viewport={viewport}
       transition={{
         duration: shouldReduceMotion ? 0.05 : duration,
