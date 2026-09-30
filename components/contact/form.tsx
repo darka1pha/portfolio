@@ -1,11 +1,11 @@
 'use client';
+
 import { z } from 'zod';
 import {
   Form as FormProvider,
   FormField,
   FormItem,
   FormLabel,
-  FormDescription,
   FormMessage,
   FormControl,
 } from '../ui/form';
@@ -17,25 +17,26 @@ import { sendEmail } from '@/lib/actions';
 import SubmitButton from '../shared/submitButton';
 import { Toaster } from '../ui/toaster';
 import { useToast } from '@/hooks/use-toast';
+import { FadeIn } from '@/components/animations';
 
 const formSchema = z.object({
   name: z
-    .string({ required_error: 'name is required' })
-    .min(2, { message: 'name should be at least 2 charachters' })
-    .max(50, { message: "name couldn't be more than 50 charachter" }),
+    .string({ required_error: 'Name is required' })
+    .min(2, { message: 'Name must be at least 2 characters' })
+    .max(50, { message: 'Name cannot exceed 50 characters' }),
   email: z
-    .string({ required_error: 'email is required' })
-    .email({ message: 'invalid email address' }),
+    .string({ required_error: 'Email is required' })
+    .email({ message: 'Please enter a valid email address' }),
   subject: z
-    .string({ required_error: 'subject is required' })
-    .min(2, { message: 'subject should be at least 2 charachters' })
-    .max(50, { message: "subject couldn't be more than 50 charachter" }),
-  message: z.string({ required_error: 'message is required' }).min(5, {
-    message: 'message should be at least 5 charachters',
-  }),
+    .string({ required_error: 'Subject is required' })
+    .min(2, { message: 'Subject must be at least 2 characters' })
+    .max(100, { message: 'Subject cannot exceed 100 characters' }),
+  message: z
+    .string({ required_error: 'Message is required' })
+    .min(10, { message: 'Message must be at least 10 characters' }),
 });
 
-const Form = () => {
+export default function ContactForm() {
   const toast = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,23 +46,32 @@ const Form = () => {
       subject: '',
       message: '',
     },
-    mode: 'all',
+    mode: 'onTouched',
   });
 
   const formActions = async (formData: FormData) => {
     const isComplete = await form.trigger();
 
     if (isComplete) {
-      const res = await sendEmail(formData);
-      if (res.data?.id) {
+      try {
+        const res = await sendEmail(formData);
+        if (res?.data?.id) {
+          toast.toast({
+            title: 'Message Dispatched',
+            description: 'Thank you for reaching out! I will reply within 24 hours.',
+          });
+          form.reset();
+        } else {
+          toast.toast({
+            title: 'Notice',
+            description: 'Thank you! If email server does not respond, feel free to write to abolfazl.omrani1999@gmail.com directly.',
+            variant: 'default',
+          });
+        }
+      } catch (err) {
         toast.toast({
-          title: 'Success',
-          description: 'Email sent successfully',
-        });
-      } else {
-        toast.toast({
-          title: 'Error',
-          description: 'Something went wrong',
+          title: 'Direct Email Available',
+          description: 'Could not send via automated gateway. Please email abolfazl.omrani1999@gmail.com',
           variant: 'destructive',
         });
       }
@@ -69,82 +79,106 @@ const Form = () => {
   };
 
   return (
-    <FormProvider {...form}>
-      <form
-        className='grid grid-cols-2 gap-5'
-        action={formActions}
-      >
-        <FormField
-          control={form.control}
-          name='name'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder='name'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='email'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder='email'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='subject'
-          render={({ field }) => (
-            <FormItem className='col-span-2'>
-              <FormLabel>Subject</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder='subject'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='message'
-          render={({ field }) => (
-            <FormItem className='col-span-2'>
-              <FormLabel>Message</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder='message'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className='col-span-2 flex flex-row justify-end'>
-          <SubmitButton>Submit</SubmitButton>
+    <FadeIn delay={0.15}>
+      <div className='glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl'>
+        <div className='mb-8'>
+          <h3 className='text-2xl font-bold text-white mb-2'>Send a Message</h3>
+          <p className='text-xs sm:text-sm text-zinc-400'>
+            Fill in the details below. All inquiries are received directly in my primary inbox.
+          </p>
         </div>
-      </form>
-      <Toaster />
-    </FormProvider>
-  );
-};
 
-export default Form;
+        <FormProvider {...form}>
+          <form className='space-y-6' action={formActions}>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-5'>
+              <FormField
+                control={form.control}
+                name='name'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='text-xs font-semibold uppercase tracking-wider text-zinc-300'>
+                      Your Name
+                    </FormLabel>
+                    <FormControl>
+                      <Input placeholder='e.g., Alex Johnson' {...field} />
+                    </FormControl>
+                    <FormMessage className='text-xs text-rose-400' />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name='email'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='text-xs font-semibold uppercase tracking-wider text-zinc-300'>
+                      Email Address
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type='email'
+                        placeholder='e.g., alex@company.com'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className='text-xs text-rose-400' />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <FormField
+              control={form.control}
+              name='subject'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className='text-xs font-semibold uppercase tracking-wider text-zinc-300'>
+                    Subject / Project Scope
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder='e.g., Next.js 15 Web App Development / Full-time role'
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className='text-xs text-rose-400' />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name='message'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className='text-xs font-semibold uppercase tracking-wider text-zinc-300'>
+                    Message
+                  </FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder='Tell me about your goals, timeline, and any specific technical requirements...'
+                      rows={5}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className='text-xs text-rose-400' />
+                </FormItem>
+              )}
+            />
+
+            <div className='pt-2 flex flex-col sm:flex-row items-center justify-between gap-4'>
+              <span className='text-[11px] text-zinc-500'>
+                🔒 Your privacy is respected. No spam guaranteed.
+              </span>
+              <SubmitButton className='w-full sm:w-auto'>
+                Dispatch Message
+              </SubmitButton>
+            </div>
+          </form>
+          <Toaster />
+        </FormProvider>
+      </div>
+    </FadeIn>
+  );
+}
