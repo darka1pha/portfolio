@@ -138,7 +138,7 @@ export default function ContactForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder='e.g., Next.js 15 Web App Development / Full-time role'
+                      placeholder='e.g., Next.js Web App Development / Full-time role'
                       {...field}
                     />
                   </FormControl>

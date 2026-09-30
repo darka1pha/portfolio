@@ -1,9 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Terminal } from 'lucide-react';
-import PROFILE_IMAGE from '@/public/images/profile.webp';
+import { ArrowRight, CheckCircle2, Terminal, Cpu, ShieldCheck, Code2 } from 'lucide-react';
 import { FadeIn, SectionHeading } from '@/components/animations';
 
 export default function AboutSection() {
@@ -96,36 +94,108 @@ export default function AboutSection() {
           </FadeIn>
         </div>
 
-        {/* Right Column: Clear, Full-Color Profile Picture Card */}
+        {/* Right Column: Engineering Architecture & Technical Console */}
         <div className='lg:col-span-5 relative flex justify-center'>
           <FadeIn delay={0.15} direction='left'>
-            <div className='relative w-full max-w-[320px] sm:max-w-[380px] rounded-3xl overflow-hidden glass-panel border border-white/20 p-3 sm:p-4 shadow-2xl bg-zinc-950/80 group'>
+            <div className='relative w-full max-w-[340px] sm:max-w-[420px] rounded-3xl overflow-hidden glass-panel border border-white/20 p-4 sm:p-5 shadow-2xl bg-zinc-950/90 group'>
               {/* Outer halo */}
               <div className='absolute -inset-1 rounded-3xl bg-teal-500/20 blur-xl opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none' />
 
-              {/* Picture Frame with direct aspect-ratio */}
-              <div className='relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-zinc-900 shadow-inner'>
-                <Image
-                  src={PROFILE_IMAGE}
-                  alt='Abolfazl Omrani - React & Next.js Developer'
-                  fill
-                  sizes='(max-width: 768px) 320px, 380px'
-                  className='object-cover object-top transition-transform duration-700 group-hover:scale-105'
-                  priority
-                />
+              {/* IDE / Terminal Window Header */}
+              <div className='flex items-center justify-between pb-3.5 mb-4 border-b border-white/10'>
+                <div className='flex items-center gap-2'>
+                  <div className='w-3 h-3 rounded-full bg-rose-500/80' />
+                  <div className='w-3 h-3 rounded-full bg-amber-500/80' />
+                  <div className='w-3 h-3 rounded-full bg-emerald-500/80' />
+                  <span className='ml-2 text-xs font-mono text-zinc-400'>
+                    abolfazl.profile.ts
+                  </span>
+                </div>
+                <div className='inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'>
+                  <span className='w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse' />
+                  <span>Production Live</span>
+                </div>
               </div>
 
-              {/* Clean Bottom Overlay Badge */}
-              <div className='mt-3.5 p-3.5 rounded-xl glass-panel-subtle border border-white/10'>
-                <div className='flex items-center justify-between'>
-                  <div>
-                    <h3 className='text-sm sm:text-base font-bold text-white'>Abolfazl Omrani</h3>
-                    <p className='text-xs text-teal-400 font-mono'>React & Next.js Developer</p>
-                  </div>
-                  <div className='w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-teal-300'>
-                    <Terminal size={16} />
-                  </div>
+              {/* Code / Architecture Display */}
+              <div className='relative font-mono text-xs leading-relaxed rounded-2xl bg-black/60 p-4 border border-white/5 space-y-1.5 overflow-hidden'>
+                <div className='text-zinc-500'>
+                  <span className='text-teal-400'>const</span>{' '}
+                  <span className='text-yellow-300'>engineer</span>:{' '}
+                  <span className='text-emerald-400'>SystemArchitect</span> = &#123;
                 </div>
+                
+                <div className='pl-4 space-y-1 text-zinc-300'>
+                  <div>
+                    <span className='text-zinc-400'>name:</span>{' '}
+                    <span className='text-teal-300'>&apos;Abolfazl Omrani&apos;</span>,
+                  </div>
+                  <div>
+                    <span className='text-zinc-400'>domain:</span>{' '}
+                    <span className='text-teal-300'>&apos;Port Logistics & Rail Systems&apos;</span>,
+                  </div>
+                  <div>
+                    <span className='text-zinc-400'>stack:</span> [
+                    <span className='text-emerald-300'>&apos;Next.js 16+&apos;</span>,{' '}
+                    <span className='text-emerald-300'>&apos;React 19&apos;</span>,{' '}
+                    <span className='text-emerald-300'>&apos;TypeScript&apos;</span>
+                    ],
+                  </div>
+                  <div>
+                    <span className='text-zinc-400'>architecture:</span> [
+                    <span className='text-teal-200'>&apos;Server Actions&apos;</span>,{' '}
+                    <span className='text-teal-200'>&apos;PWA&apos;</span>,{' '}
+                    <span className='text-teal-200'>&apos;Three.js&apos;</span>
+                    ],
+                  </div>
+                  <div>
+                    <span className='text-zinc-400'>principles:</span> &#123;
+                  </div>
+                  <div className='pl-4 text-zinc-400'>
+                    typeSafety: <span className='text-emerald-400'>&apos;100% Strict&apos;</span>,<br />
+                    telemetry: <span className='text-emerald-400'>&apos;Real-Time Sockets&apos;</span>,<br />
+                    performance: <span className='text-emerald-400'>&apos;&lt; 1.2s LCP&apos;</span>,
+                  </div>
+                  <div>&#125;,</div>
+                </div>
+
+                <div className='text-zinc-500'>&#125;;</div>
+              </div>
+
+              {/* Live Capabilities Badges */}
+              <div className='grid grid-cols-2 gap-2 mt-4'>
+                <div className='p-2.5 rounded-xl glass-panel-subtle border border-white/5'>
+                  <div className='flex items-center gap-1.5 text-[11px] font-semibold text-zinc-300'>
+                    <Cpu size={13} className='text-teal-400' />
+                    <span>Core Focus</span>
+                  </div>
+                  <p className='text-[10px] text-zinc-400 mt-0.5'>
+                    Industrial Systems & Freight
+                  </p>
+                </div>
+
+                <div className='p-2.5 rounded-xl glass-panel-subtle border border-white/5'>
+                  <div className='flex items-center gap-1.5 text-[11px] font-semibold text-zinc-300'>
+                    <ShieldCheck size={13} className='text-emerald-400' />
+                    <span>Standards</span>
+                  </div>
+                  <p className='text-[10px] text-zinc-400 mt-0.5'>
+                    Clean Code & Zod Validation
+                  </p>
+                </div>
+              </div>
+
+              {/* Status Footer */}
+              <div className='mt-3.5 p-3 rounded-xl glass-panel-subtle border border-white/10 flex items-center justify-between text-xs'>
+                <div className='flex items-center gap-2'>
+                  <div className='w-2 h-2 rounded-full bg-teal-400 animate-pulse' />
+                  <span className='font-mono text-zinc-300 text-[11px]'>
+                    Kaveh Port & Marine Services
+                  </span>
+                </div>
+                <span className='text-[10px] font-mono text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20'>
+                  Active
+                </span>
               </div>
             </div>
           </FadeIn>

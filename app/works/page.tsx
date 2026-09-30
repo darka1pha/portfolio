@@ -9,7 +9,7 @@ import { FadeIn, SectionHeading, CardSpotlight } from '@/components/animations';
 
 const FILTER_CATEGORIES = [
   'All',
-  'Next.js 15',
+  'Next.js',
   'Three.js / WebGL',
   'React.js',
   'Full-Stack / Supabase',
@@ -20,7 +20,7 @@ export default function WorksPage() {
 
   const filteredProjects = PROJECTS.filter((project) => {
     if (activeFilter === 'All') return true;
-    if (activeFilter === 'Next.js 15')
+    if (activeFilter === 'Next.js')
       return (
         project.category.includes('Next.js') ||
         project.tags.some((t) => t.includes('Next.js'))
@@ -148,9 +148,15 @@ export default function WorksPage() {
                       </div>
                     </div>
 
-                    <h3 className='text-lg font-bold text-white mb-2 group-hover:text-teal-400 transition-colors'>
+                    <h3 className='text-lg font-bold text-white mb-1 group-hover:text-teal-400 transition-colors'>
                       {project.title}
                     </h3>
+
+                    {project.tagline && (
+                      <p className='text-[11px] font-mono text-teal-400/90 mb-2 line-clamp-1'>
+                        {project.tagline}
+                      </p>
+                    )}
 
                     <p className='text-xs text-zinc-400 mb-4 line-clamp-3 leading-relaxed'>
                       {project.description}

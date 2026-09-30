@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Abolfazl Omrani | Frontend Architect & Creative Developer',
   description:
-    'Creative Frontend Engineer specializing in Next.js 15, React 19, TypeScript, Three.js, and high-performance adaptive web applications.',
+    'Creative Frontend Engineer specializing in Next.js, React, TypeScript, Three.js, and high-performance adaptive web applications.',
   metadataBase: new URL('https://darkalpha.ir'),
   verification: { google: 'lDm-cObga-_xjhinBJE7AfadBEmH9XzNDn44it9SdSc' },
   keywords: [

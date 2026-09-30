@@ -88,9 +88,15 @@ export default function ProjectsSection() {
                     </div>
                   </div>
 
-                  <h3 className='text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-teal-400 transition-colors'>
+                  <h3 className='text-xl sm:text-2xl font-bold text-white mb-1 group-hover:text-teal-400 transition-colors'>
                     {project.title}
                   </h3>
+
+                  {project.tagline && (
+                    <p className='text-xs font-mono text-teal-400/90 mb-2.5 line-clamp-1'>
+                      {project.tagline}
+                    </p>
+                  )}
 
                   <p className='text-xs sm:text-sm text-zinc-400 line-clamp-2 mb-4 leading-relaxed'>
                     {project.description}
@@ -120,7 +126,7 @@ export default function ProjectsSection() {
           href='/works'
           className='inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass-panel text-white font-semibold text-sm hover:border-teal-500/40 hover:text-teal-300 transition-all active:scale-95'
         >
-          <span>Explore All 6+ Architectural Works</span>
+          <span>Explore All {PROJECTS.length}+ Architectural Works</span>
           <ArrowRight size={16} />
         </Link>
       </FadeIn>
