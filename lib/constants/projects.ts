@@ -8,6 +8,7 @@ import PORSAN from '../../public/images/projects/porsan.webp';
 import TICKETING from '../../public/images/projects/ticketing.webp';
 import SHIPPING from '../../public/images/projects/shipping.webp';
 import LUBITAL from '../../public/images/projects/lubital.webp';
+import DIAMOND from '../../public/images/projects/diamond.webp';
 
 export interface Project {
   slug: string;
@@ -24,6 +25,18 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    slug: 'diamond',
+    title: 'Diamond',
+    category: 'Logistics / Next.js 16',
+    tagline: 'Enterprise port warehousing, cargo depot tracking & container stuffing platform',
+    description:
+      'Full-scale port warehousing and cargo depot management platform engineered for Almas Tejarat Tav to orchestrate end-to-end bulk cargo intake, weighbridge scaling, moisture tracking, depot code allocation, container stuffing, VGM reporting, and real-time client self-service inventory tracking.',
+    featured: true,
+    image: DIAMOND,
+    tags: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'React 19', 'Zustand', 'Recharts', 'React Hook Form', 'Zod'],
+    highlight: 'Port Depo & Warehousing Engine',
+  },
   {
     slug: 'railway',
     title: 'Railway Shipping',
