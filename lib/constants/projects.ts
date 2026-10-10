@@ -9,6 +9,7 @@ import TICKETING from '../../public/images/projects/ticketing.webp';
 import SHIPPING from '../../public/images/projects/shipping.webp';
 import LUBITAL from '../../public/images/projects/lubital.webp';
 import DIAMOND from '../../public/images/projects/diamond.webp';
+import NOVA from '../../public/images/projects/nova.webp';
 
 export interface Project {
   slug: string;
@@ -25,6 +26,20 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    slug: 'nova',
+    title: 'Nova',
+    category: 'DevTools / Next.js 16',
+    tagline: 'Extensible Next.js development toolkit, starter scaffolding & production CLI',
+    description:
+      'High-performance developer toolkit and modular CLI for Next.js applications, offering 18 production starter templates, 19 architectural presets, 35+ composable plugins, Vercel AI SDK integration, multi-ORM data layers, and automated code generation.',
+    featured: true,
+    image: NOVA,
+    tags: ['Next.js 16', 'TypeScript', 'CLI', 'React 19', 'Tailwind CSS', 'Turborepo', 'Developer Tools'],
+    liveUrl: 'https://nova.darkalpha.ir',
+    githubUrl: 'https://github.com/darka1pha/nova',
+    highlight: 'Next.js CLI & Scaffolding Engine',
+  },
   {
     slug: 'diamond',
     title: 'Diamond',

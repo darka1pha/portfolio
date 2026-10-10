@@ -10,6 +10,7 @@ import { FadeIn, SectionHeading, CardSpotlight } from '@/components/animations';
 const FILTER_CATEGORIES = [
   'All',
   'Next.js',
+  'Developer Tools',
   'Three.js / WebGL',
   'React.js',
   'Full-Stack / Supabase',
@@ -24,6 +25,11 @@ export default function WorksPage() {
       return (
         project.category.includes('Next.js') ||
         project.tags.some((t) => t.includes('Next.js'))
+      );
+    if (activeFilter === 'Developer Tools')
+      return (
+        project.category.includes('DevTools') ||
+        project.tags.some((t) => t.includes('Developer Tools') || t.includes('CLI'))
       );
     if (activeFilter === 'Three.js / WebGL')
       return (
