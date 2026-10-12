@@ -166,7 +166,7 @@ export const PROJECTS: Project[] = [
     tags: ['Next.js', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Framer Motion'],
     image: KRIST,
     featured: true,
-    liveUrl: 'https://krist.vcercel.app',
+    liveUrl: 'https://krist.darkalpha.ir',
     highlight: 'Real-time Supabase Database',
   }
 ];
